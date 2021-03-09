@@ -2,12 +2,8 @@ from tkinter import filedialog, Tk, Frame, Label, Button, messagebox
 import os
 from urllib3 import PoolManager
 
-auto_update = True
-
 def ExtensionUpdater():
-    extnURL = 'https://bhuvannarula.cf/offlinegst/extras/importExtensions-96331425.txt'
-    if not auto_update:
-        return False
+    extnURL = 'https://raw.githubusercontent.com/bhuvannarula/offlineGST-Extensions/master/importExtensions.py'
     try:
         browser2 = PoolManager()
         respupdate = browser2.urlopen(
