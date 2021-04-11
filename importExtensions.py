@@ -26,19 +26,19 @@ def ExtensionUpdater():
     except:
         return False
 
-def ExtensionManager(companyGSTIN):
+def ExtensionManager(companyGSTINhashed):
     extension_names = ['ext1']
     for extn in extension_names:
-        if eval('check_' + extn)(companyGSTIN) == True:
+        if eval('check_' + extn)(companyGSTINhashed) == True:
             break
     else:
         return False
     return True
 
-def ExtensionExecuter(companyGSTIN, cName, sMonth, sale = True):
+def ExtensionExecuter(companyGSTINhashed, cName, sMonth, sale = True):
     extension_names = ['ext1']
     for extn in extension_names:
-        if eval('check_' + extn)(companyGSTIN) == True:
+        if eval('check_' + extn)(companyGSTINhashed) == True:
             break
     else:
         return False
@@ -46,13 +46,13 @@ def ExtensionExecuter(companyGSTIN, cName, sMonth, sale = True):
     eval('execute_' + selected_extn)(cName, sMonth, sale)
 
 
-# Extension 1 - For Babbar Electrical GSTIN : 06AZQPK2531B1ZO
-def check_ext1(companyGSTIN):
+# Extension 1 - For Hashed GSTIN : e138392fe8986ff58008bd7e4a62487d6d09f5a001645ab8fa6655266aeef774
+def check_ext1(companyGSTINhashed):
     '''
     Function checks if the extension is applicable for selected company, if it is then returns True
     if True is returned, then only import button will be placed.
     '''
-    if companyGSTIN == '06AZQPK2531B1ZO':
+    if companyGSTINhashed == 'e138392fe8986ff58008bd7e4a62487d6d09f5a001645ab8fa6655266aeef774':
         return True
     else:
         return False
@@ -60,12 +60,12 @@ def check_ext1(companyGSTIN):
 def execute_ext1(cName, sMonth, sale):
     import openpyxl, csv, os
     
-    root = Tk(className=' Babbar Electricals Import')
+    root = Tk(className=' {} Import'.format(cName))
 
     frame0 = Frame(root, height = 200, width = 300)
     frame0.pack()
 
-    label1 = Label(frame0, text='Babbar Electricals\n\nImport Files\n\nSelect files for {} month:\n\n'.format(sMonth))
+    label1 = Label(frame0, text='{}\n\nImport Files\n\nSelect files for {} month:\n\n'.format(cName, sMonth))
     label1.place(x = 50, y = 20)
 
     def askfiles():
