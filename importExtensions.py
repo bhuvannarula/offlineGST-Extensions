@@ -139,7 +139,7 @@ def execute_ext1(cName, sMonth, sale):
                 if temp11 != mode:
                     if hh == 1 and temp11 in ('', None):
                         break
-                    elif len(cur_sheet['C' + str(ii)].value) == 15:
+                    elif (cur_sheet['C' + str(ii)].value and len(cur_sheet['C' + str(ii)].value) == 15):
                         print('Credit/Debit Note at row {}, file {} {}'.format(ii, mode, taxRate))
                         continue
                     continue
