@@ -137,15 +137,18 @@ def execute_ext1(cName, sMonth, sale):
                 # checking invoice status
                 temp11 = cur_sheet['D' + str(ii)].value
                 if temp11 != mode:
-                    if hh == 1:
+                    if hh == 1 and temp11 in ('', None):
                         break
+                    elif len(cur_sheet['C' + str(ii)].value) == 15:
+                        print('Credit/Debit Note at row {}, file {} {}'.format(ii, mode, taxRate))
+                        continue
                     continue
                 elif temp11 == mode:
                     hh = 1
                 # now making row from excel for csv file
                 temprow = []
                 tgstin = cur_sheet['C' + str(ii)].value
-                if tgstin == '':
+                if len(tgstin) != 15:
                     tgstin = unregPOS
                     pname = ''
                 else:
