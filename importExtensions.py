@@ -158,7 +158,7 @@ def execute_ext1(cName, sMonth, sale):
                 temprow = [
                     tgstin,
                     pname,
-                    cur_sheet[('E' if sale else 'F') + str(ii)].value,
+                    cur_sheet[('E' if sale else 'F') + str(ii)].value.replace('\\','/'),
                     tempdate,
                     '',
                     stcode[tgstin[:2]],
