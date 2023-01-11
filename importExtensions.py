@@ -65,11 +65,17 @@ def execute_ext1(cName, sMonth, sale):
     frame0 = Frame(root, height = 200, width = 300)
     frame0.pack()
 
-    label1 = Label(frame0, text='{}\n\nImport Files\n\nSelect files for {} month:\n\n'.format(cName, sMonth))
+    label1 = Label(frame0, text='{}\n\nImport Files\n\nSelect folder for {} month:\n\n'.format(cName, sMonth))
     label1.place(x = 50, y = 20)
 
     def askfiles():
-        filess = filedialog.askopenfilenames()
+        #filess = filedialog.askopenfilenames()
+        filess0 = filedialog.askdirectory()
+        filess1 = os.listdir(filess0)
+        filess = []
+        for item in filess1:
+            filess.append(os.path.join(filess0, item))
+
         if not filess:
             return None
         for item in filess:
