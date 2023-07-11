@@ -154,7 +154,7 @@ def execute_ext1(cName, sMonth, sale):
                 # now making row from excel for csv file
                 temprow = []
                 tgstin = cur_sheet['C' + str(ii)].value
-                if len(tgstin) != 15:
+                if (tgstin == None) or (len(tgstin) != 15):
                     tgstin = unregPOS
                     pname = ''
                 else:
