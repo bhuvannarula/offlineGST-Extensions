@@ -133,7 +133,7 @@ def execute_ext1(cName, sMonth, sale):
         for item in newfiles:
             current_wb = openpyxl.load_workbook(item)
             cur_sheet = current_wb.active
-            C7value = cur_sheet['C7'].value
+            C7value = cur_sheet['C6'].value
             taxRate = int(float(C7value[-3:-1]))
             unregPOS = '07' if C7value[0] == 'I' else '06'
             ii, hh = 0, 0 # hh = 0 if invoices haven't started, 1 if invoices going on
